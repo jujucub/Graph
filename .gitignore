@@ -1,0 +1,25 @@
+# Unity 
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+Debug/
+
+# Unity?
+*.pidb
+*.csproj
+*.unityproj
+*.booproj
+UnityProject/.vs/
+
+
+# Mac
+*.DS_Store
+
+# Unity? MonoDevelop?
+*.svd
+*.user
+*.userprefs
+*.suo
+*.sln
+
+# Bin
