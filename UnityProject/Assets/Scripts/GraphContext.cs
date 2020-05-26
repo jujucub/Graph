@@ -7,4 +7,5 @@ public class GraphContext
     public float MinValue { get; set; }
     public Vector2 SegmentUnit { get; set; }
     public Rect Rect { get; set; }
+    public RectTransform RectTransform { get; set; }
 }
