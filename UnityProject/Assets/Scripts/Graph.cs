@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 [System.Serializable]
-public class GraphEvent : UnityEvent<int> {}
+public class GraphEventOld : UnityEvent<int> {}
 
 [RequireComponent(typeof(GraphRenderer))]
-public abstract class Graph : MonoBehaviour
+public abstract class GraphOld : MonoBehaviour
 {
     GraphRenderer _renderer;
 
@@ -23,8 +25,7 @@ public abstract class Graph : MonoBehaviour
         }
     }
 
-    public abstract IGraphContent[] Contents { get; }
-
+    public abstract IEnumerable<IGraphContent> Contents { get; }
     public abstract void OnDraw(VertexHelper vh);
     public virtual void OnPointerDown(Vector2 position) { }
     public virtual void OnPointerEnter(Vector2 position) { }

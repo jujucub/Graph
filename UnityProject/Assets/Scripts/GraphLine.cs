@@ -3,17 +3,28 @@ using UnityEditor;
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;
 
 [System.Serializable]
-public class GraphLine : Graph
+public class GraphLine : GraphOld
 {
     [SerializeField]
     float _width = 5f;
 
     [SerializeField]
-    GraphContentLine[] _contents;
+    List<GraphContentLine> _contents;
 
-    public override IGraphContent[] Contents { get { return _contents; } }
+    public override IEnumerable<IGraphContent> Contents { get { return _contents; } }
+
+    public void AddContent(GraphContentLine content)
+    {
+        _contents.Add(content);
+    }
+
+    public void RemoveContent(GraphContentLine content)
+    {
+        _contents.Remove(content);
+    }
 
     public override void OnDraw(VertexHelper vh)
     {
@@ -33,7 +44,7 @@ public class GraphLine : Graph
             var contentSegmentX = rect.xMin + xIndex * segmentUnit.x + segmentUnit.x / 2f;
             var beforeContentSegmentX = rect.xMin + (xIndex - 1) * segmentUnit.x + segmentUnit.x / 2f;
 
-            for (int contentsIndex = 0; contentsIndex < _contents.Length; ++contentsIndex)
+            for (int contentsIndex = 0; contentsIndex < _contents.Count; ++contentsIndex)
             {
                 var content = _contents[contentsIndex] as GraphContentLine;
                 if (xIndex >= content.Values.Length)
